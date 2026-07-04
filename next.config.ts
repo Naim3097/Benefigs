@@ -34,6 +34,8 @@ const nextConfig: NextConfig = {
     ],
     deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920],
     imageSizes: [64, 96, 128, 200, 256, 384],
+    // Cache optimized images at the edge for ~31 days (repeat loads are instant).
+    minimumCacheTTL: 2678400,
   },
 
   async headers() {

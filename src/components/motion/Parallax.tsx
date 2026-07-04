@@ -1,13 +1,12 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Subtle scroll parallax. Translates its children on the Y axis as the element
- * passes through the viewport. Disabled for reduced motion. Wrap content that is
- * slightly oversized within an `overflow-hidden` frame to avoid edge reveal.
+ * Subtle scroll parallax — dependency-free (no framer-motion). Translates its
+ * inner content on Y as it passes through the viewport. Fully disabled on
+ * touch/small screens and for reduced motion, so mobile pays zero cost.
  */
 export function Parallax({
   children,
@@ -18,24 +17,60 @@ export function Parallax({
   className?: string;
   distance?: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [distance * -0.5, distance * 0.5]);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
 
-  if (reduce) {
-    return (
-      <div ref={ref} className={className}>
-        {children}
-      </div>
+  useEffect(() => {
+    const outer = outerRef.current;
+    const inner = innerRef.current;
+    if (!outer || !inner) return;
+
+    // Skip entirely on mobile/touch and for reduced motion.
+    const disabled =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(max-width: 1024px)").matches ||
+      window.matchMedia("(hover: none)").matches;
+    if (disabled) return;
+
+    let inView = false;
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const rect = outer.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const progress = (vh - rect.top) / (vh + rect.height); // 0..1 across viewport
+      const y = (Math.min(Math.max(progress, 0), 1) - 0.5) * distance;
+      inner.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0)`;
+    };
+
+    const onScroll = () => {
+      if (!inView || ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        if (inView) update();
+      },
+      { threshold: 0 },
     );
-  }
+    io.observe(outer);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [distance]);
 
   return (
-    <div ref={ref} className={cn("will-change-transform", className)}>
-      <motion.div style={{ y }} className="h-full w-full">
+    <div ref={outerRef} className={cn("will-change-transform", className)}>
+      <div ref={innerRef} className="h-full w-full">
         {children}
-      </motion.div>
+      </div>
     </div>
   );
 }

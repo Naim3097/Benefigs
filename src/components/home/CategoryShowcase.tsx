@@ -19,13 +19,7 @@ export function CategoryShowcase() {
         {/* Two large lead tiles */}
         <Stagger gap={110} className="mt-12 grid gap-5 lg:grid-cols-2">
           {[first, second].filter(Boolean).map((c) => (
-            <CategoryCard
-              key={c.slug}
-              category={c}
-              featured
-              priority
-              sizes="(max-width: 1024px) 92vw, 46vw"
-            />
+            <CategoryCard key={c.slug} category={c} featured sizes="(max-width: 1024px) 92vw, 46vw" />
           ))}
         </Stagger>
 
