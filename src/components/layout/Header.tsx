@@ -30,12 +30,13 @@ export function Header() {
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 bg-paper/95 backdrop-blur-sm transition-shadow duration-300",
-        scrolled ? "shadow-sm border-b border-line-200" : "border-b border-transparent",
-      )}
-    >
+    <>
+      <header
+        className={cn(
+          "sticky top-0 z-40 bg-paper transition-shadow duration-300",
+          scrolled ? "shadow-sm border-b border-line-200" : "border-b border-transparent",
+        )}
+      >
       <div className="container-page">
         <div className="flex h-20 items-center justify-between gap-4">
           {/* Left: menu (mobile) + logo */}
@@ -109,9 +110,10 @@ export function Header() {
           </div>
         </div>
       </div>
+      </header>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
-    </header>
+    </>
   );
 }
