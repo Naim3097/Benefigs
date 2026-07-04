@@ -1,0 +1,427 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   BENEFIGS DESIGN SYSTEM  ·  token-driven, older-adult-first, premium
+   ----------------------------------------------------------------------------
+   Principles
+   · Large, legible type (18px base), generous line-height, high contrast (AAA-leaning)
+   · Warm "paper" surfaces + deep fig-berry ink for a premium, human, timeless feel
+   · Every interactive target >= 48px, always-visible focus, reduced-motion honored
+   ============================================================================ */
+
+@theme {
+  /* -- Typefaces (wired to next/font CSS vars set on <html>) ---------------- */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* -- Brand: Fig Berry (primary) ------------------------------------------ */
+  --color-berry-50: #fbf1f4;
+  --color-berry-100: #f5dce4;
+  --color-berry-200: #ebb9c9;
+  --color-berry-300: #dc8fa8;
+  --color-berry-400: #c86485;
+  --color-berry-500: #ae4067;
+  --color-berry-600: #922c4f;
+  --color-berry-700: #7c1d3f;
+  --color-berry-800: #5f1530;
+  --color-berry-900: #440f22;
+
+  /* -- Brand: Fig Leaf (secondary / natural) ------------------------------- */
+  --color-leaf-50: #f0f4ec;
+  --color-leaf-100: #dce7d2;
+  --color-leaf-200: #bbd0a8;
+  --color-leaf-300: #93b379;
+  --color-leaf-400: #6e9455;
+  --color-leaf-500: #52783c;
+  --color-leaf-600: #3e5f2e;
+  --color-leaf-700: #2f4a24;
+  --color-leaf-800: #24391c;
+  --color-leaf-900: #182611;
+
+  /* -- Accent: Fig Honey (used sparingly for premium detailing) ------------ */
+  --color-honey-100: #f6e9cf;
+  --color-honey-300: #e3c179;
+  --color-honey-500: #c0912e;
+  --color-honey-600: #9e7420;
+
+  /* -- Warm neutrals: paper -> ink ----------------------------------------- */
+  --color-paper: #fbf7f0;
+  --color-paper-deep: #f4ecdf;
+  --color-surface: #ffffff;
+  --color-aubergine: #2a1720; /* deep fig — dark sections / footer */
+  --color-aubergine-700: #40222f;
+
+  --color-ink-900: #221a1c; /* primary text  ~14:1 on paper */
+  --color-ink-700: #4a3f42; /* secondary text ~8:1 */
+  --color-ink-500: #6e6266; /* muted / meta   ~5.3:1 */
+  --color-line-200: #e8dfd2; /* hairline border */
+  --color-line-300: #d9ccb9; /* stronger border */
+
+  /* -- Semantic state colors ----------------------------------------------- */
+  --color-success-50: #eef4ec;
+  --color-success-600: #2f7a46;
+  --color-success-700: #245e37;
+  --color-danger-50: #fbeceb;
+  --color-danger-600: #b3261e;
+  --color-danger-700: #8c1c16;
+  --color-info-50: #eaf0f6;
+  --color-info-600: #2a5b86;
+
+  /* -- Fluid type scale (paired line-heights, tracking, weight) ------------ */
+  --text-hero: clamp(2.75rem, 5.4vw, 4.75rem);
+  --text-hero--line-height: 1.04;
+  --text-hero--letter-spacing: -0.02em;
+  --text-hero--font-weight: 500;
+
+  --text-h1: clamp(2.1rem, 4vw, 3.25rem);
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.018em;
+  --text-h1--font-weight: 500;
+
+  --text-h2: clamp(1.7rem, 3vw, 2.5rem);
+  --text-h2--line-height: 1.12;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h2--font-weight: 500;
+
+  --text-h3: clamp(1.35rem, 2vw, 1.8rem);
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 500;
+
+  --text-lead: clamp(1.2rem, 1.55vw, 1.45rem);
+  --text-lead--line-height: 1.55;
+
+  --text-body: 1.125rem; /* 18px base for readability */
+  --text-body--line-height: 1.7;
+
+  --text-small: 1rem;
+  --text-small--line-height: 1.6;
+
+  --text-eyebrow: 0.9rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.14em;
+
+  /* -- Radius -------------------------------------------------------------- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 999px;
+
+  /* -- Elevation (warm, subtle — never heavy) ------------------------------ */
+  --shadow-xs: 0 1px 2px rgba(40, 26, 20, 0.06);
+  --shadow-sm: 0 2px 10px rgba(40, 26, 20, 0.06);
+  --shadow-md: 0 10px 30px rgba(40, 26, 20, 0.08);
+  --shadow-lg: 0 22px 55px rgba(40, 26, 20, 0.11);
+
+  /* -- Motion -------------------------------------------------------------- */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* -- Layout -------------------------------------------------------------- */
+  --container-page: 80rem; /* 1280px */
+  --container-prose: 44rem;
+}
+
+/* ============================================================================
+   BASE LAYER
+   ============================================================================ */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  * {
+    border-color: var(--color-line-200);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem; /* offset for sticky header on anchor jumps */
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.7;
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-ink-900);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img,
+  picture,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  ::selection {
+    background-color: var(--color-berry-100);
+    color: var(--color-berry-800);
+  }
+
+  /* Always-visible, high-contrast focus for keyboard users */
+  :focus-visible {
+    outline: 3px solid var(--color-berry-600);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  /* Respect users who prefer reduced motion — disable non-essential animation */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ============================================================================
+   COMPONENT / UTILITY LAYER
+   ============================================================================ */
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* Eyebrow / kicker label above headings */
+  .eyebrow {
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-berry-700);
+  }
+
+  /* Long-form content (policy / article / about pages) */
+  .longform {
+    color: var(--color-ink-700);
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+  .longform > * + * {
+    margin-top: 1.15rem;
+  }
+  .longform h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    line-height: 1.2;
+    color: var(--color-ink-900);
+    margin-top: 2.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .longform h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--color-ink-900);
+    margin-top: 1.75rem;
+    margin-bottom: 0.25rem;
+  }
+  .longform ul,
+  .longform ol {
+    padding-left: 1.5rem;
+  }
+  .longform ul {
+    list-style: disc;
+  }
+  .longform ol {
+    list-style: decimal;
+  }
+  .longform li + li {
+    margin-top: 0.4rem;
+  }
+  .longform a {
+    color: var(--color-berry-700);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .longform strong {
+    color: var(--color-ink-900);
+    font-weight: 500;
+  }
+
+  /* Underline-on-hover for inline text links (accessible, non-decorative) */
+  .link-underline {
+    text-decoration: underline;
+    text-decoration-color: var(--color-line-300);
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1.5px;
+    transition: text-decoration-color 0.2s var(--ease-soft);
+  }
+  .link-underline:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+/* Entrance animations for overlays (disabled under prefers-reduced-motion via
+   the global reset above). */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.25s var(--ease-soft) both;
+}
+.animate-slide-in-left {
+  animation: slide-in-left 0.32s var(--ease-soft) both;
+}
+.animate-slide-in-right {
+  animation: slide-in-right 0.32s var(--ease-soft) both;
+}
+.animate-rise-in {
+  animation: rise-in 0.28s var(--ease-soft) both;
+}
+
+/* Utility: hide visually but keep for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip-link: visible only when focused */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-150%);
+  background: var(--color-berry-700);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: transform 0.2s var(--ease-soft);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Scroll-reveal: only hide when JS is available (html.js) AND motion is allowed.
+   No-JS users always see content; reduced-motion users see content immediately. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  html.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.7s var(--ease-soft),
+      transform 0.7s var(--ease-soft);
+  }
+
+  /* Staggered reveal group — direct children fade-up with per-child delay */
+  html.js .reveal-group > * {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.65s var(--ease-soft),
+      transform 0.65s var(--ease-soft);
+  }
+  html.js .reveal-group.is-in > * {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Page-enter transition — replays on each navigation via app/template.tsx.
+   Pure CSS (no-JS safe); neutralised under prefers-reduced-motion. */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-enter {
+  animation: page-in 0.5s var(--ease-soft) both;
+}
