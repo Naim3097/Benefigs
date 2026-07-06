@@ -39,10 +39,10 @@ export function Hero() {
           id="hero-heading"
           className="text-hero text-white [text-shadow:0_2px_30px_rgba(20,8,16,0.5)]"
         >
-          Buah tin segar, ditanam dengan teliti.
+          Buah tin segar, terus dari ladang kami.
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lead text-paper/90 [text-shadow:0_1px_18px_rgba(0,0,0,0.45)]">
-          Dipetik masak, dihantar segar ke seluruh Malaysia.
+          Dipetik masak, dihantar segar terus ke rumah anda.
         </p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <ButtonLink href="/categories/fresh-figs" size="lg" variant="onDark">
