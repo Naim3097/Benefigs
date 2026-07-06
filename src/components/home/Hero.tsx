@@ -27,20 +27,17 @@ export function Hero() {
       {/* Legibility scrim — flat brand tint guarantees contrast behind the
           centered copy; a gentle gradient adds depth without crushing the
           golden-hour foreground. */}
-      <div aria-hidden className="absolute inset-0 bg-aubergine/40" />
+      <div aria-hidden className="absolute inset-0 bg-aubergine/22" />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-aubergine/55 via-aubergine/15 to-aubergine/30"
+        className="absolute inset-0 bg-gradient-to-t from-aubergine/55 via-aubergine/8 to-aubergine/15"
       />
 
       {/* Centered copy */}
       <div className="relative z-10 mx-auto max-w-2xl px-5 py-28 text-center text-paper animate-rise-in">
-        <p className="text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-honey-200 [text-shadow:0_1px_12px_rgba(0,0,0,0.4)]">
-          Ladang buah tin premium Malaysia · Sejak 2018
-        </p>
         <h1
           id="hero-heading"
-          className="mt-5 text-hero text-white [text-shadow:0_2px_30px_rgba(20,8,16,0.5)]"
+          className="text-hero text-white [text-shadow:0_2px_30px_rgba(20,8,16,0.5)]"
         >
           Buah tin segar, ditanam dengan teliti.
         </h1>
