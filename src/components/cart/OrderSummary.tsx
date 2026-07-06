@@ -8,7 +8,7 @@ import { formatMYR, cn } from "@/lib/utils";
 import { copy } from "@/lib/copy";
 import { ecommerce } from "@/lib/analytics";
 import { buttonClasses } from "@/components/ui/Button";
-import { IconShield, IconClose } from "@/components/ui/icons";
+import { IconClose } from "@/components/ui/icons";
 
 function Row({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
@@ -103,9 +103,7 @@ export function OrderSummary({
         </Link>
       ) : null}
 
-      <p className="mt-3 flex items-center justify-center gap-2 text-small text-ink-500">
-        <IconShield width={18} height={18} className="text-leaf-600" /> {copy.cart.secureNote}
-      </p>
+      <p className="mt-3 text-center text-small text-ink-500">{copy.cart.secureNote}</p>
     </div>
   );
 }

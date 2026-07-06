@@ -9,9 +9,9 @@ import { cn } from "@/lib/utils";
 
 const tabs = [
   { href: "/account", label: "Ringkasan" },
-  { href: "/account/orders", label: "Pesanan saya" },
+  { href: "/account/orders", label: "Order saya" },
   { href: "/account/profile", label: "Profil" },
-  { href: "/wishlist", label: "Senarai hajat" },
+  { href: "/wishlist", label: "Wishlist" },
 ];
 
 export function AccountGuard({ children }: { children: ReactNode }) {
@@ -34,7 +34,7 @@ export function AccountGuard({ children }: { children: ReactNode }) {
     return (
       <Section space="lg">
         <Container>
-          <p className="text-ink-500">Memuatkan…</p>
+          <p className="text-ink-500">Sekejap ya…</p>
         </Container>
       </Section>
     );
@@ -62,7 +62,7 @@ export function AccountGuard({ children }: { children: ReactNode }) {
           </button>
         </div>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[0.28fr_1fr] lg:gap-12">
+        <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[0.28fr_1fr] lg:gap-12">
           <nav aria-label="Menu akaun" className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
             {tabs.map((t) => {
               const active = pathname === t.href;

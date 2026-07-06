@@ -23,7 +23,7 @@ export function WishlistView() {
           <div className="relative size-32 overflow-hidden rounded-full">
             <FigMotif motif="fig-whole" accent="berry" />
           </div>
-          <h1 className="mt-6 text-h1">Senarai hajat anda kosong</h1>
+          <h1 className="mt-6 text-h1">Wishlist anda masih kosong</h1>
           <p className="mt-3 max-w-md text-lead text-ink-700">
             Simpan produk kegemaran anda dengan menekan ikon hati — ia akan muncul di sini.
           </p>
@@ -38,11 +38,11 @@ export function WishlistView() {
   return (
     <Section space="lg">
       <Container>
-        <h1 className="text-h1">Senarai hajat</h1>
-        <p className="mt-3 text-lead text-ink-700">Produk yang anda simpan untuk kemudian.</p>
+        <h1 className="text-h1">Wishlist anda</h1>
+        <p className="mt-3 text-lead text-ink-700">Produk yang anda simpan untuk nanti.</p>
         <div className="mt-10">
           {!hydrated ? (
-            <p className="text-ink-500">Memuatkan…</p>
+            <p className="text-ink-500">Sekejap ya…</p>
           ) : (
             <ProductGrid products={products} columns={4} />
           )}

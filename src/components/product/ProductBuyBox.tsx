@@ -120,7 +120,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
           </button>
         ) : (
           <div className="flex flex-col gap-3 sm:flex-row">
-            <QuantityStepper value={qty} onChange={setQty} className="sm:shrink-0" />
+            <QuantityStepper block value={qty} onChange={setQty} className="sm:w-36 sm:flex-none" />
             <AddToCartButton product={product} variant={variant} quantity={qty} size="lg" full className="flex-1" />
           </div>
         )}
@@ -138,7 +138,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
         </li>
         <li className="flex items-center gap-3">
           <IconShield width={22} height={22} className="shrink-0 text-leaf-600" />
-          Pembayaran selamat melalui Lean.X · Jaminan kesegaran 7 hari
+          Pembayaran selamat · Jaminan segar 7 hari
         </li>
       </ul>
     </div>

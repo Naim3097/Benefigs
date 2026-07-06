@@ -21,7 +21,7 @@ export function Footer() {
     <footer className="bg-aubergine text-paper">
       <div className="container-page">
         {/* Newsletter + brand */}
-        <div className="grid gap-10 border-b border-white/10 py-14 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+        <div className="grid grid-cols-1 gap-10 border-b border-white/10 py-14 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div className="max-w-md">
             <Logo onDark />
             <p className="mt-4 text-paper/80">{copy.footer.brandBlurb}</p>

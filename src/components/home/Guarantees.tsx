@@ -21,7 +21,7 @@ const items = [
   {
     icon: IconShield,
     title: "Pembayaran selamat",
-    body: "Pembayaran dilindungi melalui Lean.X — kad, FPX dan e-dompet.",
+    body: "Bayaran anda dilindungi — kad, Online Banking (FPX) dan E-Wallet.",
   },
 ];
 

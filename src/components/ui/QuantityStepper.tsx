@@ -11,6 +11,7 @@ export function QuantityStepper({
   max = 99,
   label = copy.product.quantity,
   size = "md",
+  block = false,
   className,
 }: {
   value: number;
@@ -19,6 +20,8 @@ export function QuantityStepper({
   max?: number;
   label?: string;
   size?: "sm" | "md";
+  /** Fill the container width, spreading controls to the edges. */
+  block?: boolean;
   className?: string;
 }) {
   const btn = size === "sm" ? "size-10" : "size-12";
@@ -27,19 +30,27 @@ export function QuantityStepper({
     <div
       role="group"
       aria-label={label}
-      className={cn("inline-flex items-center rounded-md border border-line-300 bg-surface", className)}
+      className={cn(
+        "items-center rounded-md border border-line-300 bg-surface",
+        block ? "flex w-full justify-between" : "inline-flex",
+        className,
+      )}
     >
       <button
         type="button"
         onClick={() => onChange(Math.max(min, value - 1))}
         disabled={value <= min}
         aria-label={`${label}: kurang`}
-        className={cn("grid place-items-center rounded-l-md text-ink-800 hover:bg-berry-50 disabled:opacity-40", btn)}
+        className={cn("grid shrink-0 place-items-center rounded-l-md text-ink-800 hover:bg-berry-50 disabled:opacity-40", btn)}
       >
         <IconMinus width={icon} height={icon} />
       </button>
       <span
-        className={cn("text-center font-semibold", size === "sm" ? "min-w-10 text-[1rem]" : "min-w-12 text-[1.1rem]")}
+        className={cn(
+          "text-center font-semibold",
+          block && "flex-1",
+          size === "sm" ? "min-w-10 text-[1rem]" : "min-w-12 text-[1.1rem]",
+        )}
         aria-live="polite"
       >
         {value}
@@ -49,7 +60,7 @@ export function QuantityStepper({
         onClick={() => onChange(Math.min(max, value + 1))}
         disabled={value >= max}
         aria-label={`${label}: tambah`}
-        className={cn("grid place-items-center rounded-r-md text-ink-800 hover:bg-berry-50 disabled:opacity-40", btn)}
+        className={cn("grid shrink-0 place-items-center rounded-r-md text-ink-800 hover:bg-berry-50 disabled:opacity-40", btn)}
       >
         <IconPlus width={icon} height={icon} />
       </button>

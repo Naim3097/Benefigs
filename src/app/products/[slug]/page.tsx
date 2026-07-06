@@ -66,7 +66,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       {/* Details */}
       <Section tone="surface" space="lg" ariaLabel={copy.product.details}>
-        <Container className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>
             <h2 className="text-h2">{copy.product.description}</h2>
             {product.description.map((para, i) => (

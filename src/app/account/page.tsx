@@ -7,9 +7,9 @@ import { IconChevronRight } from "@/components/ui/icons";
 export const metadata: Metadata = { title: "Akaun saya", robots: { index: false, follow: false } };
 
 const cards = [
-  { href: "/account/orders", title: "Pesanan saya", body: "Lihat dan jejak pesanan anda." },
+  { href: "/account/orders", title: "Order saya", body: "Lihat dan jejak order anda." },
   { href: "/account/profile", title: "Profil", body: "Kemas kini nama dan e-mel anda." },
-  { href: "/wishlist", title: "Senarai hajat", body: "Produk yang anda simpan untuk kemudian." },
+  { href: "/wishlist", title: "Wishlist", body: "Produk yang anda simpan untuk nanti." },
 ];
 
 export default function AccountPage() {
@@ -32,7 +32,7 @@ export default function AccountPage() {
       </div>
       <div className="mt-8">
         <Link href="/shop" className={buttonClasses({ variant: "primary", size: "lg" })}>
-          Teruskan membeli-belah
+          Sambung shopping
         </Link>
       </div>
     </AccountGuard>

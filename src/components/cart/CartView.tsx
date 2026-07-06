@@ -39,7 +39,7 @@ export function CartView() {
         {!hydrated ? (
           <p className="mt-8 text-ink-500">{copy.common.loading}</p>
         ) : (
-          <div className="mt-8 grid gap-10 lg:grid-cols-[1.5fr_0.9fr] lg:gap-14">
+          <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1.5fr_0.9fr] lg:gap-14">
             <ul className="divide-y divide-line-200 border-y border-line-200">
               {lines.map((line) => {
                 const key = lineKey(line.productId, line.variantId);
@@ -64,12 +64,12 @@ export function CartView() {
                           {formatMYR(line.price * line.quantity)}
                         </p>
                       </div>
-                      <div className="mt-auto flex items-center justify-between pt-4">
+                      <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-4">
                         <QuantityStepper value={line.quantity} onChange={(q) => setQty(key, q)} />
                         <button
                           type="button"
                           onClick={() => removeItem(line)}
-                          className="min-h-11 rounded-md px-2 font-medium text-ink-500 hover:text-danger-600 hover:underline"
+                          className="min-h-11 rounded-md px-1 font-medium text-ink-500 hover:text-danger-600 hover:underline"
                         >
                           {copy.cart.remove}
                         </button>

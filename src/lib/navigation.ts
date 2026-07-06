@@ -52,7 +52,7 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
       { label: "Penghantaran", href: "/shipping" },
       { label: "Pemulangan & jaminan", href: "/returns" },
       { label: "Soalan lazim", href: "/faq" },
-      { label: "Jejak pesanan", href: "/account/orders" },
+      { label: "Jejak order", href: "/account/orders" },
     ],
   },
   {
@@ -60,8 +60,8 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
     links: [
       { label: "Log masuk", href: "/account/login" },
       { label: "Daftar akaun", href: "/account/register" },
-      { label: "Pesanan saya", href: "/account/orders" },
-      { label: "Senarai hajat", href: "/wishlist" },
+      { label: "Order saya", href: "/account/orders" },
+      { label: "Wishlist", href: "/wishlist" },
     ],
   },
 ];

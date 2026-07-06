@@ -22,9 +22,9 @@ const MY_STATES = [
 const STEPS = ["Penghantaran", "Pembayaran", "Semak"];
 
 const PAYMENT_METHODS: { id: PaymentMethod; label: string; hint: string }[] = [
-  { id: "fpx", label: "Perbankan Dalam Talian (FPX)", hint: "Maybank, CIMB, Public Bank dan lain-lain" },
+  { id: "fpx", label: "Online Banking (FPX)", hint: "Maybank, CIMB, Public Bank dan lain-lain" },
   { id: "card", label: "Kad Kredit / Debit", hint: "Visa, Mastercard" },
-  { id: "ewallet", label: "E-dompet", hint: "GrabPay, Touch ’n Go, ShopeePay" },
+  { id: "ewallet", label: "E-Wallet", hint: "GrabPay, Touch ’n Go, ShopeePay" },
 ];
 
 type Fields = {
@@ -63,10 +63,10 @@ export function CheckoutFlow() {
     return (
       <Section space="lg">
         <Container className="py-10 text-center">
-          <h1 className="text-h1">Troli anda kosong</h1>
-          <p className="mt-3 text-lead text-ink-700">Tambah beberapa item sebelum ke pembayaran.</p>
+          <h1 className="text-h1">Troli anda masih kosong</h1>
+          <p className="mt-3 text-lead text-ink-700">Tambah beberapa item dulu sebelum checkout.</p>
           <Link href="/shop" className={cn(buttonClasses({ variant: "primary", size: "lg" }), "mt-6")}>
-            Mula membeli-belah
+            Jom shopping
           </Link>
         </Container>
       </Section>
@@ -75,13 +75,13 @@ export function CheckoutFlow() {
 
   function validateDelivery(): boolean {
     const e: Partial<Record<keyof Fields, string>> = {};
-    if (!f.fullName.trim()) e.fullName = "Sila masukkan nama penuh.";
-    if (!EMAIL_RE.test(f.email)) e.email = "Sila masukkan e-mel yang sah.";
-    if (f.phone.replace(/\D/g, "").length < 9) e.phone = "Sila masukkan nombor telefon yang sah.";
-    if (!f.address1.trim()) e.address1 = "Sila masukkan alamat.";
-    if (!f.city.trim()) e.city = "Sila masukkan bandar.";
-    if (!/^\d{5}$/.test(f.postcode.trim())) e.postcode = "Poskod perlu 5 digit.";
-    if (!f.state) e.state = "Sila pilih negeri.";
+    if (!f.fullName.trim()) e.fullName = "Isi nama penuh anda ya.";
+    if (!EMAIL_RE.test(f.email)) e.email = "E-mel ni nampak tak betul.";
+    if (f.phone.replace(/\D/g, "").length < 9) e.phone = "Nombor telefon ni nampak tak betul.";
+    if (!f.address1.trim()) e.address1 = "Isi alamat anda ya.";
+    if (!f.city.trim()) e.city = "Isi bandar anda ya.";
+    if (!/^\d{5}$/.test(f.postcode.trim())) e.postcode = "Poskod kena 5 digit.";
+    if (!f.state) e.state = "Pilih negeri anda ya.";
     setErrors(e);
     return Object.keys(e).length === 0;
   }
@@ -116,9 +116,9 @@ export function CheckoutFlow() {
         window.location.href = data.redirectUrl;
         return;
       }
-      setSubmitError(data?.error ?? "Pembayaran tidak dapat dimulakan. Sila cuba lagi.");
+      setSubmitError(data?.error ?? "Bayaran tak dapat dimulakan. Cuba lagi ya.");
     } catch {
-      setSubmitError("Ralat rangkaian. Sila semak sambungan anda dan cuba lagi.");
+      setSubmitError("Ada masalah sambungan. Check internet anda dan cuba lagi.");
     } finally {
       setSubmitting(false);
     }
@@ -154,7 +154,7 @@ export function CheckoutFlow() {
           })}
         </ol>
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.4fr_0.9fr] lg:gap-14">
+        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_0.9fr] lg:gap-14">
           <div>
             {step === 0 ? (
               <div className="grid gap-5">
@@ -184,10 +184,10 @@ export function CheckoutFlow() {
 
             {step === 1 ? (
               <div>
-                <h2 className="text-h3">Kaedah pembayaran</h2>
+                <h2 className="text-h3">Cara pembayaran</h2>
                 <p className="mt-2 flex items-center gap-2 text-ink-700">
                   <IconShield width={20} height={20} className="text-leaf-600" />
-                  Semua pembayaran diproses dengan selamat oleh Lean.X.
+                  Semua bayaran diproses dengan selamat.
                 </p>
                 <fieldset className="mt-5 flex flex-col gap-3">
                   <legend className="sr-only">Pilih kaedah pembayaran</legend>
@@ -221,7 +221,7 @@ export function CheckoutFlow() {
 
             {step === 2 ? (
               <div className="grid gap-6">
-                <h2 className="text-h3">Semak pesanan anda</h2>
+                <h2 className="text-h3">Semak order anda</h2>
 
                 <Recap title="Dihantar kepada" onEdit={() => setStep(0)}>
                   <p className="font-medium text-ink-900">{f.fullName}</p>
@@ -232,7 +232,7 @@ export function CheckoutFlow() {
 
                 <Recap title="Pembayaran" onEdit={() => setStep(1)}>
                   <p>{PAYMENT_METHODS.find((m) => m.id === method)?.label}</p>
-                  <p className="text-ink-500">Diproses dengan selamat oleh Lean.X</p>
+                  <p className="text-ink-500">Diproses dengan selamat</p>
                 </Recap>
 
                 <div>
@@ -278,7 +278,7 @@ export function CheckoutFlow() {
                 </Button>
               ) : (
                 <Button size="lg" onClick={placeOrder} disabled={submitting} className="sm:min-w-56">
-                  {submitting ? "Memproses…" : `Bayar ${formatMYR(totals.total)}`}
+                  {submitting ? "Sekejap…" : `Bayar ${formatMYR(totals.total)}`}
                 </Button>
               )}
             </div>
@@ -287,7 +287,7 @@ export function CheckoutFlow() {
           <div className="lg:sticky lg:top-28 lg:self-start">
             <OrderSummary showCoupon={step === 0} />
             <p className="mt-4 text-center text-small text-ink-500">
-              Dengan membuat pesanan, anda bersetuju dengan{" "}
+              Dengan buat order, anda setuju dengan{" "}
               <Link href="/terms" className="link-underline text-berry-700">Terma Perkhidmatan</Link> kami.
             </p>
           </div>

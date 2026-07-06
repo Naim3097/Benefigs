@@ -15,7 +15,7 @@ export default function Loading() {
             </div>
           ))}
         </div>
-        <span className="sr-only">Memuatkan…</span>
+        <span className="sr-only">Sekejap ya…</span>
       </Container>
     </Section>
   );

@@ -1,16 +1,17 @@
 import { cn } from "@/lib/utils";
-import { copy } from "@/lib/copy";
 import { IconTruck, IconLeaf, IconShield } from "@/components/ui/icons";
 
 /**
  * Slim trust bar above the header. Static + server-rendered (no layout shift,
  * no JS). Communicates the three highest-value reassurances at a glance.
+ * Texts are kept short so each fits on one line at every breakpoint — no
+ * mid-word clipping on narrow phones.
  */
 export function AnnouncementBar() {
   const items = [
-    { icon: IconTruck, text: copy.trust.shipping },
-    { icon: IconLeaf, text: copy.trust.mygap },
-    { icon: IconShield, text: copy.trust.returns },
+    { icon: IconTruck, text: "Penghantaran seluruh Malaysia" },
+    { icon: IconLeaf, text: "Bertauliah MyGAP" },
+    { icon: IconShield, text: "Jaminan segar 7 hari" },
   ];
 
   return (

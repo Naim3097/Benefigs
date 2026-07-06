@@ -42,7 +42,7 @@ export function WishlistButton({
         )}
       >
         <IconHeart width={20} height={20} className={cn(saved && "fill-berry-700", pulse && "scale-110 transition-transform")} />
-        {saved ? "Disimpan dalam senarai hajat" : "Simpan ke senarai hajat"}
+        {saved ? "Disimpan di Wishlist" : "Simpan ke Wishlist"}
       </button>
     );
   }
@@ -52,7 +52,7 @@ export function WishlistButton({
       type="button"
       onClick={onClick}
       aria-pressed={saved}
-      aria-label={saved ? `Buang ${product.name} daripada senarai hajat` : `Simpan ${product.name} ke senarai hajat`}
+      aria-label={saved ? `Buang ${product.name} dari Wishlist` : `Simpan ${product.name} ke Wishlist`}
       className={cn(
         "grid size-11 place-items-center rounded-full bg-surface/95 text-ink-700 shadow-sm transition-colors hover:text-berry-700",
         saved && "text-berry-700",

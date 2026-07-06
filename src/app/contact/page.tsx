@@ -30,7 +30,7 @@ export default function ContactPage() {
         crumbs={crumbs}
       />
       <Section space="lg">
-        <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <h2 className="text-h3">Butiran perhubungan</h2>
             <ul className="mt-6 flex flex-col gap-5 text-ink-700">

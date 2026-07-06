@@ -52,7 +52,7 @@ const homeFaqs = [
   {
     question: "Apakah kaedah pembayaran yang diterima?",
     answer:
-      "Pembayaran dilindungi oleh Lean.X dan menyokong kad debit dan kredit, perbankan dalam talian FPX serta e-dompet popular. Butiran pembayaran anda tidak pernah disimpan di pelayan kami.",
+      "Pembayaran dilindungi oleh Lean.X dan menyokong kad debit dan kredit, Online Banking (FPX) serta E-Wallet popular seperti GrabPay dan Touch ’n Go. Butiran pembayaran anda tidak pernah disimpan di pelayan kami.",
   },
   {
     question: "Perlukah saya menempah lawatan ladang lebih awal?",
@@ -89,12 +89,12 @@ export default function HomePage() {
       <Guarantees />
 
       <Section space="lg" ariaLabel="Soalan lazim">
-        <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>
             <Eyebrow>Baik untuk diketahui</Eyebrow>
             <h2 className="mt-3 text-h2">Soalan, dijawab</h2>
             <p className="mt-4 text-ink-700">
-              Segala yang anda perlu untuk membeli-belah dengan yakin. Masih tertanya-tanya?{" "}
+              Semua yang anda perlu tahu untuk shopping dengan yakin. Masih tertanya-tanya?{" "}
               <Link href="/contact" className="link-underline font-semibold text-berry-700">
                 Hubungi pasukan kami
               </Link>

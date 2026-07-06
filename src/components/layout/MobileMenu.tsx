@@ -82,8 +82,8 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           <ul className="flex flex-col">
             {[
               { label: "Log masuk", href: "/account/login" },
-              { label: "Pesanan saya", href: "/account/orders" },
-              { label: "Senarai hajat", href: "/wishlist" },
+              { label: "Order saya", href: "/account/orders" },
+              { label: "Wishlist", href: "/wishlist" },
               { label: "Hubungi kami", href: "/contact" },
             ].map((l) => (
               <li key={l.href}>

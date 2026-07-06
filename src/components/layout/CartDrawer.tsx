@@ -9,7 +9,7 @@ import { formatMYR, cn, clamp } from "@/lib/utils";
 import { ecommerce } from "@/lib/analytics";
 import { Media, accentForCategory } from "@/components/media/Media";
 import { FigMotif } from "@/components/media/FigMotif";
-import { IconClose, IconPlus, IconMinus, IconTruck, IconShield } from "@/components/ui/icons";
+import { IconClose, IconPlus, IconMinus, IconTruck } from "@/components/ui/icons";
 import { buttonClasses } from "@/components/ui/Button";
 import { useDialogBehaviour } from "@/hooks/useDialogBehaviour";
 import type { CartLine } from "@/lib/types";
@@ -68,7 +68,7 @@ export function CartDrawer() {
             <div className="border-b border-line-200 bg-paper-deep px-5 py-3">
               {remaining > 0 ? (
                 <p className="text-small text-ink-700">
-                  Anda <strong className="text-ink-900">{formatMYR(remaining)}</strong> lagi untuk penghantaran percuma.
+                  Lagi <strong className="text-ink-900">{formatMYR(remaining)}</strong> je untuk dapat free shipping.
                 </p>
               ) : (
                 <p className="flex items-center gap-2 text-small font-medium text-leaf-700">
@@ -111,9 +111,7 @@ export function CartDrawer() {
                 {copy.cart.continueShopping}
               </button>
 
-              <p className="mt-3 flex items-center justify-center gap-2 text-small text-ink-500">
-                <IconShield width={18} height={18} className="text-leaf-600" /> {copy.cart.secureNote}
-              </p>
+              <p className="mt-3 text-center text-small text-ink-500">{copy.cart.secureNote}</p>
             </div>
           </>
         )}
@@ -148,7 +146,7 @@ function CartRow({
           <p className="shrink-0 font-semibold text-ink-900">{formatMYR(line.price * line.quantity)}</p>
         </div>
 
-        <div className="mt-3 flex items-center justify-between">
+        <div className="mt-3 flex items-center gap-4">
           <div className="inline-flex items-center rounded-md border border-line-300">
             <button
               type="button"
@@ -174,7 +172,7 @@ function CartRow({
           <button
             type="button"
             onClick={() => removeItem(line)}
-            className="min-h-10 rounded-md px-2 text-small font-medium text-ink-500 hover:text-danger-600 hover:underline"
+            className="min-h-10 rounded-md px-1 text-small font-medium text-ink-500 hover:text-danger-600 hover:underline"
           >
             {copy.cart.remove}
           </button>

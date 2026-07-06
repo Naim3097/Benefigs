@@ -10,7 +10,7 @@ import { ecommerce } from "@/lib/analytics";
 import type { CartLine } from "@/lib/types";
 import { Container, Section } from "@/components/ui/Section";
 import { buttonClasses } from "@/components/ui/Button";
-import { IconCheck, IconTruck } from "@/components/ui/icons";
+import { IconCheck } from "@/components/ui/icons";
 import { site } from "@/lib/site";
 
 export function OrderConfirmation() {
@@ -50,33 +50,33 @@ export function OrderConfirmation() {
           <IconCheck width={44} height={44} />
         </span>
 
-        <h1 className="mt-6 text-h1">{paid ? "Terima kasih atas pesanan anda!" : "Pembayaran belum selesai"}</h1>
+        <h1 className="mt-6 text-h1">{paid ? "Terima kasih atas order anda!" : "Pembayaran belum selesai"}</h1>
 
         {orderId ? (
           <p className="mt-3 text-lead text-ink-700">
-            Nombor pesanan anda ialah <strong className="text-ink-900">{orderId}</strong>.
+            Nombor order anda: <strong className="text-ink-900">{orderId}</strong>.
           </p>
         ) : null}
 
         {paid ? (
           <p className="mt-2 text-ink-700">
-            Kami telah menghantar pengesahan ke e-mel anda. Kami akan mula menyediakan pesanan anda dengan segera.
+            Kami dah hantar pengesahan ke e-mel anda. Order anda akan kami sediakan segera.
           </p>
         ) : (
           <p className="mt-2 text-ink-700">
-            Pembayaran anda belum disahkan. Anda boleh mencuba semula pada bila-bila masa.
+            Bayaran anda belum disahkan lagi. Anda boleh cuba semula bila-bila masa.
           </p>
         )}
 
         {isSim ? (
           <p className="mt-4 inline-block rounded-md bg-paper-deep px-3 py-1.5 text-small text-ink-500">
-            Mod demo — tiada bayaran sebenar dikenakan. Lengkapkan integrasi Lean.X untuk pembayaran langsung.
+            Mod demo — tiada bayaran sebenar dikenakan.
           </p>
         ) : null}
 
         {snapshot ? (
           <div className="mt-8 rounded-2xl border border-line-200 bg-surface p-6 text-left">
-            <h2 className="text-h3">Ringkasan pesanan</h2>
+            <h2 className="text-h3">Ringkasan order</h2>
             <ul className="mt-4 divide-y divide-line-200 border-y border-line-200">
               {snapshot.lines.map((l, i) => (
                 <li key={i} className="flex items-center justify-between gap-3 py-3">
@@ -90,7 +90,7 @@ export function OrderConfirmation() {
             </ul>
             <dl className="mt-4 space-y-2">
               <div className="flex justify-between">
-                <dt className="text-ink-700">Jumlah kecil</dt>
+                <dt className="text-ink-700">Subtotal</dt>
                 <dd className="font-medium">{formatMYR(snapshot.totals.subtotal)}</dd>
               </div>
               {snapshot.totals.discount > 0 ? (
@@ -115,11 +115,11 @@ export function OrderConfirmation() {
 
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Link href="/shop" className={buttonClasses({ variant: "primary", size: "lg" })}>
-            Teruskan membeli-belah
+            Sambung shopping
           </Link>
           {!paid ? (
             <Link href="/checkout" className={buttonClasses({ variant: "outline", size: "lg" })}>
-              Cuba bayar semula
+              Cuba bayar lagi
             </Link>
           ) : (
             <Link href="/" className={buttonClasses({ variant: "outline", size: "lg" })}>
@@ -128,9 +128,8 @@ export function OrderConfirmation() {
           )}
         </div>
 
-        <p className="mt-8 flex items-center justify-center gap-2 text-small text-ink-500">
-          <IconTruck width={18} height={18} className="text-leaf-600" />
-          Soalan tentang pesanan anda? Hubungi kami di {site.salesEmail}.
+        <p className="mt-8 text-center text-small text-ink-500">
+          Ada soalan tentang order anda? Hubungi kami di {site.salesEmail}.
         </p>
       </Container>
     </Section>

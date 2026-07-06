@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { WishlistView } from "@/components/product/WishlistView";
 
 export const metadata: Metadata = {
-  title: "Senarai hajat",
-  description: "Produk Benefigs yang anda simpan untuk kemudian.",
+  title: "Wishlist",
+  description: "Produk Benefigs yang anda simpan untuk nanti.",
   robots: { index: false, follow: true },
 };
 

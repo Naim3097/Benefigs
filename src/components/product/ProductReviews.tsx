@@ -11,7 +11,7 @@ export function ProductReviews({ product }: { product: Product }) {
   return (
     <Section id="reviews" tone="surface" space="lg" ariaLabel={copy.product.reviewsHeading}>
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
           <div>
             <h2 className="text-h2">{copy.product.reviewsHeading}</h2>
             {product.reviewCount > 0 ? (

@@ -53,7 +53,7 @@ const faqs = [
   {
     question: "Apakah kaedah pembayaran yang diterima?",
     answer:
-      "Pembayaran dilindungi oleh Lean.X dan menyokong kad debit dan kredit, perbankan dalam talian FPX serta e-dompet popular seperti GrabPay dan Touch ’n Go.",
+      "Pembayaran dilindungi oleh Lean.X dan menyokong kad debit dan kredit, Online Banking (FPX) serta E-Wallet popular seperti GrabPay dan Touch ’n Go.",
   },
   {
     question: "Bolehkah saya memulangkan pesanan?",
@@ -78,7 +78,7 @@ export default function FaqPage() {
       <PageHero
         eyebrow="Bantuan"
         title="Soalan lazim"
-        lead="Semua yang anda perlu tahu untuk membeli-belah dengan yakin."
+        lead="Semua yang anda perlu tahu untuk shopping dengan yakin."
         crumbs={crumbs}
         size="prose"
       />

@@ -14,7 +14,7 @@ const heroImage = photo("heroFigs") ?? {
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-paper" aria-labelledby="hero-heading">
-      <Container className="grid items-center gap-12 py-14 lg:grid-cols-[1.02fr_1fr] lg:gap-16 lg:py-24">
+      <Container className="grid grid-cols-1 items-center gap-12 py-14 lg:grid-cols-[1.02fr_1fr] lg:gap-16 lg:py-24">
         <div className="max-w-xl animate-rise-in">
           <p className="eyebrow">Ladang buah tin premium Malaysia · Sejak 2018</p>
           <h1 id="hero-heading" className="mt-5 text-hero text-ink-900">
