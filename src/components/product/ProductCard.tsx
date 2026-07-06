@@ -41,8 +41,8 @@ export function ProductCard({
             accent={accentForCategory(product.category)}
             sizes={sizes}
             priority={priority}
-            className="shadow-sm transition-shadow duration-500 group-hover:shadow-md"
-            imgClassName="transition-transform duration-[900ms] ease-soft group-hover:scale-[1.06]"
+            className="ring-1 ring-ink-900/[0.06] transition-shadow duration-500 group-hover:shadow-[0_18px_40px_-24px_rgba(43,20,31,0.45)]"
+            imgClassName="transition-transform duration-[900ms] ease-soft group-hover:scale-[1.04]"
           />
         </Link>
 
