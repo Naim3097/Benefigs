@@ -32,11 +32,18 @@ export function FarmVisitSection() {
               Ladang di Selangor, Pahang, Melaka &amp; Kelantan
             </li>
           </ul>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <ButtonLink href="/farm-visit" size="lg" variant="onDark">
+          <div className="mt-8 flex flex-col gap-x-5 gap-y-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <ButtonLink
+              href="/farm-visit"
+              size="lg"
+              variant="onDark"
+              className="shrink-0 whitespace-nowrap"
+            >
               Rancang lawatan anda
             </ButtonLink>
-            <span className="text-paper/80">Masuk dari RM5 · kanak-kanak &amp; warga emas RM3</span>
+            <span className="max-w-xs text-paper/80 sm:max-w-none">
+              Masuk dari RM5 · kanak-kanak &amp; warga emas RM3
+            </span>
           </div>
         </Reveal>
         <Reveal delay={80}>
