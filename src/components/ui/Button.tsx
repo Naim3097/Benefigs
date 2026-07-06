@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "secondary" | "outline" | "ghost" | "onDark";
+type Variant = "primary" | "secondary" | "outline" | "ghost" | "onDark" | "onDarkOutline";
 type Size = "md" | "lg";
 
 const base =
@@ -17,6 +17,8 @@ const variants: Record<Variant, string> = {
   outline: "border-2 border-berry-700 text-berry-800 hover:bg-berry-50",
   ghost: "text-berry-800 hover:bg-berry-50",
   onDark: "bg-white text-berry-800 hover:bg-paper shadow-sm",
+  // Frosted outline for use over photography / dark backgrounds.
+  onDarkOutline: "border-2 border-white/60 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20",
 };
 
 const sizes: Record<Size, string> = {
